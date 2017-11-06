@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Damda</title>
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <style media="screen">
+            html, body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+
+                background-image: url('/static/accounts/images//background.jpeg');
+                background-size: cover;
+                -moz-background-size: cover;
+                -webkit-background-size: cover;
+                -o-background-size: cover;
+                background-repeat: no-repeat;
+            }
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .container {
+                height: 450px;
+                width: 650px;
+                background-color: white;
+                border-radius: 5px;
+
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+            .info {
+                height: 100%;
+                width: 40%;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .input {
+                height: 100%;
+                width: 100%;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            form {
+                height: 100%;
+                width: 45%;
+            }
+            .info .text {
+                margin-top: 10px;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .or {
+                width: 100%;
+                height: 40px;
+
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .or hr {
+                margin: 0;
+                width: 125px;
+                color: #8e8e8e;
+            }
+            .or span {
+                font-size: 12px;
+                color: #8e8e8e;
+            }
+            .not-member {
+                width: 100%;
+                height: 40px;
+
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .not-member hr {
+                margin: 0;
+                width: 75px;
+                background-color: #8e8e8e;
+            }
+            .not-member span {
+                font-size: 12px;
+                color: #8e8e8e;
+            }
+            button, input {
+                width: 100%;
+                height: 40px;
+
+                border-radius: 5px;
+                outline: 0;
+                border: 0;
+            }
+            input {
+                width: calc(100% - 15px);
+
+                background-color: #f5f5f5;
+                padding-left: 15px;
+
+                font-size: 15px;
+                color: #8e8e8e;
+            }
+            .register {
+                background-color: #f5f5f5;
+                color: #8e8e8e;
+                font-size: 15px;
+            }
+            .facebook {
+                color: white;
+                font-size: 15px;
+                font-weight: 100;
+                background-color: #4166d2;
+            }
+            a {
+                width: 100%;
+            }
+            .login {
+                background: linear-gradient(to right, #276DFF, #2C54CC, #651DD3);
+                color: white;
+                font-size: 15px;
+            }
+            .text span {
+                font-weight: 300;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="info">
+                <div class="logo">
+                    <img src="/static/accounts/images//logo.png" alt="" width="170px" height="170px">
+                </div>
+                <div class="text">
+                    <span><strong>'damda'</strong>와 함께</span>
+                    <span>당신이 <strong>담고 싶은 모든 것</strong>을</span>
+                    <span>봤던 그대로 담아보세요!</span>
+                </div>
+            </div>
+            <form class="form">
+                <div class="input">
+                    <a href="{% url "social:begin" "facebook" %}"><button class="facebook" type="button">facebook으로 로그인</button></a>
+                    <div class="or">
+                        <hr><span>또는</span><hr>
+                    </div>
+                    <input class="email" type="text" name="email" placeholder="이메일 주소"><br>
+                    <input class="password" type="password" name="password" placeholder="비밀번호"><br>
+                    <button id="login" class="login" type="submit">로그인</button>
+                    <div class="not-member">
+                        <hr><span>아직 회원이 아니시라면?</span><hr>
+                    </div>
+                    <button class="register" type="button">회원가입</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
