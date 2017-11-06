@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -13,6 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 @method_decorator(csrf_exempt, name='dispatch')
 class Login(View):
     def get(self, request):
+        logout(request)
         return render(request, 'accounts/login.html')
 
 @method_decorator(csrf_exempt, name='dispatch')
