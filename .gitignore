@@ -16,3 +16,11 @@ media
 # <django-project-name>/staticfiles/
 
 # End of https://www.gitignore.io/api/django
+
+# Created by https://www.gitignore.io/api/sass
+
+### Sass ###
+.sass-cache/
+*.css.map
+
+# End of https://www.gitignore.io/api/sass
