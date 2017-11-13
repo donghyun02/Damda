@@ -75,7 +75,8 @@ html, body {
       .content .side .service img {
         margin-right: 5px; }
       .content .side .service span {
-        margin-left: 5px; }
+        margin-left: 5px;
+        color: #8e8e8e; }
   .content .main {
     height: 100%;
     width: calc(100% - 250px);
