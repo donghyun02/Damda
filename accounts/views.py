@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.contrib.auth import logout
+from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
@@ -18,12 +18,26 @@ class Login(View):
         logout(request)
         return render(request, 'accounts/login.html')
 
+    def post(self, request):
+        logout(request)
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+
+        if user is None:
+            return JsonResponse({'success': 'false', 'error': 'user', 'message': '존재하지 않는 사용자입니다.'})
+        else:
+            login(request, user)
+            return JsonResponse({'success': 'true', 'message': '로그인 성공'})
+
 @method_decorator(csrf_exempt, name='dispatch')
 class Register(View):
     def get(self, request):
+        logout(request)
         return render(request, 'accounts/register.html')
 
     def post(self, request):
+        logout(request)
         username = request.POST.get('username')
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
