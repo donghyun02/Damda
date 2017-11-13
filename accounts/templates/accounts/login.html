@@ -139,6 +139,9 @@
             .text span {
                 font-weight: 300;
             }
+            .alert {
+                color: red;
+            }
         </style>
     </head>
     <body>
@@ -153,26 +156,49 @@
                     <span>봤던 그대로 담아보세요!</span>
                 </div>
             </div>
-            <form class="form">
+            <form id="form" class="form">
                 <div class="input">
                     <a href="{% url "social:begin" "facebook" %}"><button class="facebook" type="button">facebook으로 로그인</button></a>
                     <div class="or">
                         <hr><span>또는</span><hr>
                     </div>
-                    <input class="email" type="text" name="email" placeholder="이메일 주소"><br>
-                    <input class="password" type="password" name="password" placeholder="비밀번호"><br>
+                    <input id="email" class="email" type="text" name="email" placeholder="이메일 주소"><br>
+                    <input id="password" class="password" type="password" name="password" placeholder="비밀번호"><br>
                     <button id="login" class="login" type="submit">로그인</button>
                     <div class="not-member">
                         <hr><span>아직 회원이 아니시라면?</span><hr>
                     </div>
-                    <button id="register" class="register" type="button">회원가입</button>
+                    <button id="register" class="register" type="button">회원가입</button><br>
+                    <span id="alert" class="alert"></span>
                 </div>
             </form>
         </div>
 
         <script type="text/javascript">
-            $('#register').on('click', () => {
-                document.location.href = '/accounts/register/';
+            $('#form').on('submit', (e)=> {
+                e.preventDefault();
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "/accounts/login/",
+                    "method": "POST",
+                    "headers": {
+                        "content-type": "application/x-www-form-urlencoded",
+                    },
+                    "data": {
+                        "username": $('#email').val(),
+                        "password": $('#password').val()
+                    }
+                }
+
+                $.ajax(settings).done(function (response) {
+                    if(response['success'] == 'true') {
+                        document.location.href = '/app/';
+                    }
+                    else {
+                        $('#alert').html(`${response['message']}`);
+                    }
+                });
             });
         </script>
     </body>
