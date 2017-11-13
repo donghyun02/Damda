@@ -175,7 +175,10 @@
         </div>
 
         <script type="text/javascript">
-            $('#form').on('submit', (e)=> {
+            $('#register').on('click', () => {
+                document.location.href = '/accounts/register/';
+            });
+            $('#form').on('submit', (e) => {
                 e.preventDefault();
                 var settings = {
                     "async": true,

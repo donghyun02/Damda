@@ -18,11 +18,11 @@
 
                 <div class="profile">
                     <div class="profile-image">
-                        <img class="setting" src="/static/capture/images/setting.png" width="30px" height="30px">
-                        <img class="image" src="/static/capture/images/default.png" width="150px" height="150px">
+                        <img id="setting" class="setting" src="/static/capture/images/setting.png" width="30px" height="30px">
+                        <img class="image" src="/media/{{ user.username }}.png/" width="150px" height="150px">
                     </div>
                     <div class="name">
-                        <span>김동현</span>
+                        <span>{{ user.first_name }}{{ user.last_name }}</span>
                     </div>
                 </div>
 
@@ -69,5 +69,36 @@
                 </div>
             </div>
         </div>
+
+        <div id="modal-setting" class="modal-setting modal">
+            <div class="left">
+                <div class="profile">
+                    <img id="upload" class="upload" src="/static/capture/images/upload.png" width="30px" height="30px">
+                    <input id="image-file" class="image-file" type="file">
+                    <img id="image" class="image" src="/media/{{ user.username }}.png" width="150px" height="150px">
+                </div>
+                <div class="name-field">
+                    <input id="name" class="name" type="text" name="" value="{{ user.first_name }}{{ user.last_name }}">
+                    <button id="name-submit" class="name-submit" type="button" name="button">완료</button>
+                </div>
+                <button id="logout" class="logout" type="button" name="button"><a href="/accounts/logout/">로그아웃</a></button>
+            </div>
+            <div class="right">
+
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $('.modal').modal();
+            $('#setting').on('click', () => {
+                $('#modal-setting').modal('open');
+            });
+            $('#upload').on('click', () => {
+                document.getElementById('image-file').click();
+            });
+            $('#image-file:file').change(() => {
+                console.log($('#image-file').val());
+            });
+        </script>
     </body>
 </html>

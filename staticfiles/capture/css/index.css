@@ -28,9 +28,7 @@ html, body {
         .content .side .profile .profile-image .setting {
           position: absolute;
           top: 5px;
-          left: 5px;
-          border-radius: 50%;
-          cursor: pointer; }
+          left: 5px; }
       .content .side .profile .name {
         font-size: 24px;
         margin-top: 10px; }
@@ -43,7 +41,7 @@ html, body {
       justify-content: flex-start; }
       .content .side .tag-and-folder .tags {
         width: 100%;
-        height: 120px;
+        height: 130px;
         text-align: center;
         overflow-y: scroll; }
         .content .side .tag-and-folder .tags .tag {
@@ -111,66 +109,5 @@ html, body {
       width: 100%;
       height: calc(100% - 60px);
       background-color: #f5f5f5; }
-
-.modal-setting {
-  width: 500px;
-  height: 400px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  .modal-setting .left {
-    height: 100%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; }
-    .modal-setting .left .profile {
-      position: relative; }
-      .modal-setting .left .profile .upload {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        border-radius: 50%;
-        cursor: pointer; }
-      .modal-setting .left .profile .image-file {
-        display: none; }
-    .modal-setting .left .name-field {
-      width: 100%;
-      height: auto; }
-      .modal-setting .left .name-field .name {
-        width: 70px;
-        height: 30px;
-        margin: 0;
-        margin-top: 20px;
-        margin-left: calc(100% / 2 - 70px / 2);
-        padding: 0;
-        text-align: center;
-        font-size: 24px;
-        transition: none; }
-      .modal-setting .left .name-field input[type=text]:focus + label {
-        color: #8e8e8e; }
-      .modal-setting .left .name-field input[type=text]:focus {
-        border-bottom: #8e8e8e;
-        box-shadow: 0 1px 0 0 #8e8e8e; }
-      .modal-setting .left .name-field .name-submit {
-        outline: none;
-        border: 0;
-        border-radius: 5px;
-        background-color: #f5f5f5;
-        color: #8e8e8e; }
-    .modal-setting .left .logout {
-      margin-top: 20px;
-      outline: none;
-      border: 0;
-      border-radius: 5px;
-      background-color: #f5f5f5; }
-      .modal-setting .left .logout a {
-        color: #8e8e8e; }
-  .modal-setting .right {
-    height: 100%;
-    width: 50%;
-    background-color: red; }
 
 /*# sourceMappingURL=index.css.map */
