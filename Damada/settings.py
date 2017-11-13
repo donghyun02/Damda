@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'Damada.wsgi.application'
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/app/'
 
 # SocialLogin: Facebook
 SOCIAL_AUTH_FACEBOOK_KEY = '129503291095700'
