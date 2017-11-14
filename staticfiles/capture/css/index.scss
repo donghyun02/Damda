@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     height: 100%;
 }
+
 .content {
     height: 100%;
     width: 100%;
@@ -34,6 +35,8 @@ html, body {
                     position: absolute;
                     top: 5px;
                     left: 5px;
+                    border-radius: 50%;
+                    cursor: pointer;
                 }
                 .image {
 
@@ -57,7 +60,7 @@ html, body {
 
             .tags {
                 width: 100%;
-                height: 130px;
+                height: 120px;
                 text-align: center;
 
                 overflow-y: scroll;
@@ -155,5 +158,93 @@ html, body {
             height: calc(100% - 60px);
             background-color: #f5f5f5;
         }
+    }
+}
+
+.modal-setting {
+    width: 500px;
+    height: 400px;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .left {
+        height: 100%;
+        width: 50%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .profile {
+            position: relative;
+
+            .upload {
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            .image-file {
+                display: none;
+            }
+        }
+
+        .name-field {
+            width: 100%;
+            height: auto;
+
+            .name {
+                width: 70px;
+                height: 30px;
+                margin: 0;
+                margin-top: 20px;
+                margin-left: calc(100% / 2 - 70px / 2);
+                padding: 0;
+                text-align: center;
+                font-size: 24px;
+                transition: none;
+            }
+
+            input[type=text]:focus + label {
+                color: #8e8e8e;
+            }
+
+            input[type=text]:focus {
+                border-bottom: #8e8e8e;
+                box-shadow: 0 1px 0 0 #8e8e8e;
+            }
+
+            .name-submit {
+                outline: none;
+                border: 0;
+                border-radius: 5px;
+                background-color: #f5f5f5;
+                color: #8e8e8e;
+            }
+        }
+
+        .logout {
+            margin-top: 20px;
+            outline: none;
+            border: 0;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+
+            a {
+                color: #8e8e8e;
+            }
+        }
+    }
+
+    .right {
+        height: 100%;
+        width: 50%;
+        background-color: red;
     }
 }
