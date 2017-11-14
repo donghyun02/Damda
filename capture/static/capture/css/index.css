@@ -33,7 +33,8 @@ html, body {
           cursor: pointer; }
       .content .side .profile .name {
         font-size: 24px;
-        margin-top: 10px; }
+        margin-top: 10px;
+        color: #515151; }
     .content .side .tag-and-folder {
       width: 100%;
       height: calc(100% - 280px - 50px);
@@ -148,7 +149,8 @@ html, body {
         padding: 0;
         text-align: center;
         font-size: 24px;
-        transition: none; }
+        transition: none;
+        color: #8e8e8e; }
       .modal-setting .left .name-field input[type=text]:focus + label {
         color: #8e8e8e; }
       .modal-setting .left .name-field input[type=text]:focus {
@@ -171,6 +173,113 @@ html, body {
   .modal-setting .right {
     height: 100%;
     width: 50%;
-    background-color: red; }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .modal-setting .right .edit-folder {
+      width: 100%;
+      height: 45%;
+      background-color: blue; }
+      .modal-setting .right .edit-folder .title-field {
+        width: 100%;
+        height: 50px;
+        background-color: yellow;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center; }
+        .modal-setting .right .edit-folder .title-field .title {
+          font-size: 20px;
+          color: #515151; }
+        .modal-setting .right .edit-folder .title-field .edit-folder-submit {
+          border: 0;
+          border-radius: 5px;
+          margin-left: 5px;
+          background-color: #f5f5f5;
+          color: #8e8e8e; }
+      .modal-setting .right .edit-folder .folders {
+        width: 100%;
+        height: 110px;
+        background-color: pink;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start; }
+        .modal-setting .right .edit-folder .folders .folder-item {
+          width: 100%;
+          height: 20px;
+          margin-top: 23.5px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center; }
+          .modal-setting .right .edit-folder .folders .folder-item img {
+            margin-right: 3px; }
+          .modal-setting .right .edit-folder .folders .folder-item span {
+            color: #8e8e8e; }
+      .modal-setting .right .edit-folder .add-folder {
+        width: 100%;
+        height: calc(100% - 50px - 110px);
+        background-color: white;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center; }
+        .modal-setting .right .edit-folder .add-folder input {
+          width: 100px;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          transition: none;
+          color: #8e8e8e;
+          border-bottom: #8e8e8e;
+          box-shadow: 0 1px 0 0 #8e8e8e; }
+        .modal-setting .right .edit-folder .add-folder input[type=text]:focus + label {
+          color: #8e8e8e; }
+        .modal-setting .right .edit-folder .add-folder input[type=text]:focus {
+          border-bottom: #8e8e8e;
+          box-shadow: 0 1px 0 0 #8e8e8e; }
+        .modal-setting .right .edit-folder .add-folder .add {
+          margin-right: 3px; }
+        .modal-setting .right .edit-folder .add-folder .submit {
+          margin-left: 5px; }
+    .modal-setting .right .edit-tag {
+      width: 100%;
+      height: 45%;
+      background-color: green; }
+      .modal-setting .right .edit-tag .title-field {
+        background-color: yellow;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center; }
+        .modal-setting .right .edit-tag .title-field .title {
+          font-size: 20px;
+          color: #515151; }
+        .modal-setting .right .edit-tag .title-field .edit-tag-submit {
+          border: 0;
+          border-radius: 5px;
+          margin-left: 5px;
+          background-color: #f5f5f5;
+          color: #8e8e8e; }
+      .modal-setting .right .edit-tag .tags {
+        width: 100%;
+        height: 110px;
+        background-color: pink;
+        overflow-y: scroll; }
+        .modal-setting .right .edit-tag .tags .tag-item {
+          display: inline-block;
+          position: relative;
+          margin-left: 5px;
+          margin-top: 8px; }
+          .modal-setting .right .edit-tag .tags .tag-item button {
+            border: 0;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+            cursor: default; }
+          .modal-setting .right .edit-tag .tags .tag-item img {
+            position: absolute;
+            top: -5px;
+            left: -5px; }
 
 /*# sourceMappingURL=index.css.map */
