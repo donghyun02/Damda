@@ -12,6 +12,7 @@ class Tag(models.Model):
 class Bookmark(models.Model):
     name = models.CharField(max_length=50)
     url = models.TextField()
+    imageURL = models.TextField(blank=True, null=True)
     tags = models.ManyToManyField(Tag)
 
 class Folder(models.Model):

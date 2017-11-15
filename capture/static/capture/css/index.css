@@ -179,12 +179,10 @@ html, body {
     align-items: center; }
     .modal-setting .right .edit-folder {
       width: 100%;
-      height: 45%;
-      background-color: blue; }
+      height: 45%; }
       .modal-setting .right .edit-folder .title-field {
         width: 100%;
         height: 50px;
-        background-color: yellow;
         display: flex;
         justify-content: flex-start;
         align-items: center; }
@@ -200,7 +198,6 @@ html, body {
       .modal-setting .right .edit-folder .folders {
         width: 100%;
         height: 110px;
-        background-color: pink;
         overflow-y: scroll;
         display: flex;
         flex-direction: column;
@@ -220,7 +217,6 @@ html, body {
       .modal-setting .right .edit-folder .add-folder {
         width: 100%;
         height: calc(100% - 50px - 110px);
-        background-color: white;
         display: flex;
         justify-content: flex-start;
         align-items: center; }
@@ -244,10 +240,8 @@ html, body {
           margin-left: 5px; }
     .modal-setting .right .edit-tag {
       width: 100%;
-      height: 45%;
-      background-color: green; }
+      height: 45%; }
       .modal-setting .right .edit-tag .title-field {
-        background-color: yellow;
         width: 100%;
         height: 50px;
         display: flex;
@@ -263,23 +257,48 @@ html, body {
           background-color: #f5f5f5;
           color: #8e8e8e; }
       .modal-setting .right .edit-tag .tags {
-        width: 100%;
+        width: 90%;
         height: 110px;
-        background-color: pink;
-        overflow-y: scroll; }
+        overflow-y: scroll;
+        text-align: center; }
         .modal-setting .right .edit-tag .tags .tag-item {
           display: inline-block;
           position: relative;
           margin-left: 5px;
-          margin-top: 8px; }
+          margin-top: 8.5px; }
           .modal-setting .right .edit-tag .tags .tag-item button {
             border: 0;
             border-radius: 5px;
             background-color: #f5f5f5;
-            cursor: default; }
+            cursor: default;
+            color: #8e8e8e; }
           .modal-setting .right .edit-tag .tags .tag-item img {
             position: absolute;
             top: -5px;
             left: -5px; }
+      .modal-setting .right .edit-tag .add-tag {
+        width: 100%;
+        height: calc(100% - 50px - 110px);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center; }
+        .modal-setting .right .edit-tag .add-tag input {
+          width: 100px;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          transition: none;
+          color: #8e8e8e;
+          border-bottom: #8e8e8e;
+          box-shadow: 0 1px 0 0 #8e8e8e; }
+        .modal-setting .right .edit-tag .add-tag input[type=text]:focus + label {
+          color: #8e8e8e; }
+        .modal-setting .right .edit-tag .add-tag input[type=text]:focus {
+          border-bottom: #8e8e8e;
+          box-shadow: 0 1px 0 0 #8e8e8e; }
+        .modal-setting .right .edit-tag .add-tag .add {
+          margin-right: 3px; }
+        .modal-setting .right .edit-tag .add-tag .submit {
+          margin-left: 5px; }
 
 /*# sourceMappingURL=index.css.map */
