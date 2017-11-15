@@ -70,132 +70,155 @@
             </div>
         </div>
 
-        <div id="modal-setting" class="modal-setting modal">
-            <div class="left">
-                <div class="profile">
-                    <img id="upload" class="upload" src="/static/capture/images/upload.png" width="30px" height="30px">
-                    <input id="image-file" class="image-file" type="file">
-                    <img id="image" class="image" src="/media/{{ user.username }}.png" width="150px" height="150px">
+        <img id="add-url" class="add-url" src="/static/capture/images/plus.png" width="50px" height="50px">
+
+        <div id="modal-add-url" class="modal-add-url modal">
+            <div class="modal-content">
+                <div class="close-field">
+                    <img id="close-modal-add-url" src="/static/capture/images/close.png" width="15px" height="15px">
                 </div>
-                <div class="name-field">
-                    <input id="name" class="name" type="text" name="" value="{{ user.first_name }}{{ user.last_name }}">
-                    <button id="name-submit" class="name-submit" type="button" name="button">완료</button>
+                <div class="url-input-field">
+                    <input id ="url" class="url" type="text" placeholder="url을 입력하세요">
                 </div>
-                <button id="logout" class="logout" type="button" name="button"><a href="/accounts/logout/">로그아웃</a></button>
+                <div class="mouse-input-field">
+                    <div class="checkbox-field">
+                        <input id="capture" class="capture" type="checkbox">
+                        <span>그대로 저장하기</span>
+                    </div>
+                    <button id="add-url-submit" class="add-url-submit" type="button">완료</button>
+                </div>
             </div>
-            <div class="right">
-                <div class="edit-folder">
-                    <div class="title-field">
-                        <span class="title">폴더 편집</span>
-                        <button class="edit-folder-submit">완료</button>
+        </div>
+
+        <div id="modal-setting" class="modal-setting modal">
+            <img id="edit-profile-modal-close" class="edit-profile-modal-close" src="/static/capture/images/close.png" width="20px" height="20px">
+            <div class="modal-content">
+                <div class="left">
+                    <div class="profile">
+                        <img id="upload" class="upload" src="/static/capture/images/upload.png" width="30px" height="30px">
+                        <input id="image-file" class="image-file" type="file">
+                        <img id="image" class="image" src="/media/{{ user.username }}.png" width="150px" height="150px">
                     </div>
-                    <div class="folders">
-                        <div class="folder-item">
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                            <span class="folder">자주 찾는 곳 (8)</span>
-                        </div>
-                        <div class="folder-item">
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                            <span class="folder">연예인 (24)</span>
-                        </div>
-                        <div class="folder-item">
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                            <span class="folder">공부 (5)</span>
-                        </div>
-                        <div class="folder-item">
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                            <span class="folder">그림 (7)</span>
-                        </div>
-                        <div class="folder-item">
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                            <span class="folder">게임 (5)</span>
-                        </div>
-                        <div class="folder-item">
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                            <span class="folder">맛난 거 (12)</span>
-                        </div>
+                    <div class="name-field">
+                        <input id="name" class="name" type="text" name="" value="{{ user.first_name }}{{ user.last_name }}">
+                        <button id="name-submit" class="name-submit" type="button" name="button">완료</button>
                     </div>
-                    <div class="add-folder">
-                        <img class="add" src="/static/capture/images/add.png" width="13px" height="13px">
-                        <input id="folder-name" class="folder-name" type="text">
-                        <img class="submit" src="/static/capture/images/submit.png" width="13px" height="13px">
-                    </div>
+                    <button id="logout" class="logout" type="button" name="button"><a href="/accounts/logout/">로그아웃</a></button>
                 </div>
-                <div class="edit-tag">
-                    <div class="title-field">
-                        <span class="title">태그 편집</span>
-                        <button class="edit-tag-submit" name="button">완료</button>
-                    </div>
-                    <div class="tags">
-                        <div class="tag-item">
-                            <button type="button" name="button">#내가공부해야할거</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                <div class="right">
+                    <div class="edit-folder">
+                        <div class="title-field">
+                            <span class="title">폴더 편집</span>
+                            <button class="edit-folder-submit">완료</button>
                         </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#디자인참고</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                        <div class="folders">
+                            <div class="folder-item">
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                                <span class="folder">자주 찾는 곳 (8)</span>
+                            </div>
+                            <div class="folder-item">
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                                <span class="folder">연예인 (24)</span>
+                            </div>
+                            <div class="folder-item">
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                                <span class="folder">공부 (5)</span>
+                            </div>
+                            <div class="folder-item">
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                                <span class="folder">그림 (7)</span>
+                            </div>
+                            <div class="folder-item">
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                                <span class="folder">게임 (5)</span>
+                            </div>
+                            <div class="folder-item">
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                                <span class="folder">맛난 거 (12)</span>
+                            </div>
                         </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#멋진풍경이나사진들</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                        </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#연예인</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                        </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#프로그래밍</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                        </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#취미</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                        </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#겨울</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                        </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#여름</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                        </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#봄</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                        </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#가을</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                        </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#웹디자인</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                        </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#디자인참고</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                        </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#공부</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                        </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#연예인</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                        </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#프로그래밍</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
-                        </div>
-                        <div class="tag-item">
-                            <button type="button" name="button">#취미</button>
-                            <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                        <div class="add-folder">
+                            <img class="add" src="/static/capture/images/add.png" width="13px" height="13px">
+                            <input id="folder-name" class="folder-name" type="text">
+                            <img class="submit" src="/static/capture/images/submit.png" width="13px" height="13px">
                         </div>
                     </div>
-                    <div class="add-tag">
-                        <img class="add" src="/static/capture/images/add.png" width="13px" height="13px">
-                        <input id="tag-name" class="tag-name" type="text">
-                        <img class="submit" src="/static/capture/images/submit.png" width="13px" height="13px">
+                    <div class="edit-tag">
+                        <div class="title-field">
+                            <span class="title">태그 편집</span>
+                            <button class="edit-tag-submit" name="button">완료</button>
+                        </div>
+                        <div class="tags">
+                            <div class="tag-item">
+                                <button type="button" name="button">#내가공부해야할거</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#디자인참고</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#멋진풍경이나사진들</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#연예인</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#프로그래밍</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#취미</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#겨울</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#여름</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#봄</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#가을</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#웹디자인</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#디자인참고</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#공부</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#연예인</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#프로그래밍</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                            <div class="tag-item">
+                                <button type="button" name="button">#취미</button>
+                                <img src="/static/capture/images/remove.png" width="13px" height="13px">
+                            </div>
+                        </div>
+                        <div class="add-tag">
+                            <img class="add" src="/static/capture/images/add.png" width="13px" height="13px">
+                            <input id="tag-name" class="tag-name" type="text">
+                            <img class="submit" src="/static/capture/images/submit.png" width="13px" height="13px">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -212,6 +235,15 @@
             $('#image-file:file').change(() => {
                 console.log($('#image-file').val());
             });
+            $('#add-url').on('click', () => {
+                $('#modal-add-url').modal('open');
+            });
+            $('#edit-profile-modal-close').on('click', () => {
+                $('#modal-setting').modal('close');
+            });
+            $('#close-modal-add-url').on('click', () => {
+                $('#modal-add-url').modal('close');
+            })
         </script>
     </body>
 </html>
