@@ -70,6 +70,7 @@ class Register(View):
             f = File(f)
             print(type(f))
             self.handle_uploaded_file(f, u.username, 'png')
+            print('test')
             return JsonResponse({'success': 'true', 'message': '성공적으로 만들어졌습니다.'})
 
     def handle_uploaded_file(self, f, fileName, extension):
