@@ -57,7 +57,7 @@ class Register(View):
         password2 = request.POST.get('password2')
         firstName = request.POST.get('firstName')
         lastName = request.POST.get('lastName')
-
+        print('{}'.format(settings.MEDIA_ROOT))
         if password != password2:
             return JsonResponse({'success': 'false', 'error': 'password', 'message': '비밀번호가 서로 다릅니다.'})
 
