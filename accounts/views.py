@@ -65,7 +65,7 @@ class Register(View):
             User.objects.get(username=username)
             return JsonResponse({'success': 'false', 'error': 'username', 'message': '이미 존재하는 이메일입니다.'})
         except:
-            # u = User.objects.create_user(username=username, password=password, last_name=lastName, first_name=firstName)
+            u = User.objects.create_user(username=username, password=password, last_name=lastName, first_name=firstName)
             # f = open('{}/capture/images/default.png'.format(settings.STATIC_ROOT))
             # f = File(f)
             # print(type(f))
