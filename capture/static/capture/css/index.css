@@ -162,7 +162,8 @@ html, body {
               align-items: center; }
               .content .main .bookmark-view .bookmark .bookmark-content .info-field .name-field span {
                 font-size: 20px;
-                color: #515151; }
+                color: #515151;
+                cursor: pointer; }
               .content .main .bookmark-view .bookmark .bookmark-content .info-field .name-field img {
                 cursor: pointer; }
             .content .main .bookmark-view .bookmark .bookmark-content .info-field .tag-field {

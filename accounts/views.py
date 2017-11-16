@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import os
 from django.conf import settings
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.models import User
@@ -30,7 +31,18 @@ class Login(View):
             return JsonResponse({'success': 'false', 'error': 'user', 'message': '존재하지 않는 사용자입니다.'})
         else:
             login(request, user)
+            if os.path.exists('{}/{}png'.format(settings.MEDIA_ROOT, username)):
+                print('make profile')
+                f = open('{}/capture/images/default.png'.format(settings.STATIC_ROOT))
+                f = File(f)
+                self.handle_uploaded_file(f, username, 'png')
             return JsonResponse({'success': 'true', 'message': '로그인 성공'})
+
+    def handle_uploaded_file(self, f, fileName, extension):
+        if f != None:
+            with open('{}/{}.{}'.format(settings.MEDIA_ROOT, fileName, extension), 'wb+') as destination:
+                for chunk in f.chunks():
+                    destination.write(chunk)
 
 @method_decorator(csrf_exempt, name='dispatch')
 class Register(View):
