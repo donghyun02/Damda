@@ -69,6 +69,7 @@ class Webshot(QObject):
 @method_decorator(csrf_exempt, name='dispatch')
 class Index(View):
     def get(self, request):
+        print('go py qt!')
         Webshot("http://naver.com", '{}/wwww.png'.format(settings.MEDIA_ROOT))
         if request.user.is_authenticated():
             u = User.objects.get(username=request.user)
