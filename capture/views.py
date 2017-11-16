@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 import json
-from urllib import urlopen
+from urllib2 import urlopen
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -88,10 +88,11 @@ class BookmarkListCreateView(generics.ListCreateAPIView):
         folder = Folder.objects.get(name=folderName, owner__username=request.user)
         folder.bookmarks.add(bookmark)
         folder.save()
-
+        print('1')
         try:
             try:
                 url = request.POST.get('url')
+                urlopen(url)
                 webpage = urlopen(url).read()
                 soup = BeautifulSoup(webpage, "html.parser")
                 imageURL = soup.find('meta', property='og:image')
@@ -104,12 +105,10 @@ class BookmarkListCreateView(generics.ListCreateAPIView):
                     imageURL = soup.find('meta', property='og:image')
                     imageURL = imageURL['content'] if url else "/static/capture/images/bookmark.png"
                 except:
-                    url = 'https://' + request.POST.get('url')
-                    webpage = urlopen(url).read()
-                    soup = BeautifulSoup(webpage, "html.parser")
-                    imageURL = soup.find('meta', property='og:image')
-                    imageURL = imageURL['content'] if url else "/static/capture/images/bookmark.png"
+                    print('what?')
+                    imageURL = "/static/capture/images/bookmark.png"
         except:
+            print('test')
             imageURL = "/static/capture/images/bookmark.png"
 
         bookmark.imageURL = imageURL

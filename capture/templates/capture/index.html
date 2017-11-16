@@ -402,7 +402,7 @@
                                     <img src="${response[i].imageURL}" width="210px" height="180px">
                                     <div class="info-field">
                                         <div class="name-field">
-                                            <span>${response[i].name}</span>
+                                            <span id="${response[i].url}" class="open-bookmark">${response[i].name}</span>
                                             <img id="edit-url-${response[i].id}-${response[i].folderName}" class="edit-url" src="/static/capture/images/link.png" width="20px" height="20px">
                                         </div>
                                         <div id="bookmark-tag-field-${response[i].id}" class="tag-field">
@@ -423,6 +423,15 @@
                     }
 
                     $('.bookmark-tag-remove').css('display', 'none');
+
+                    $('.open-bookmark').on('click', (e) => {
+                        let url = e.target.id;
+                        console.log(url);
+                        if(url.startsWith('http') == false) {
+                            url = 'http://' + url
+                        }
+                        window.open(url, '_blank');
+                    });
 
                     $('.edit-url').on('click', (e) => {
                         let button = $(e.target);
