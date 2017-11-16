@@ -10,6 +10,13 @@ html, body {
   border-radius: 50%;
   cursor: pointer; }
 
+.dropdown-content {
+  height: 100px;
+  overflow-y: scroll; }
+  .dropdown-content li a {
+    width: 100% !important;
+    color: #515151; }
+
 .content {
   height: 100%;
   width: 100%;
@@ -54,7 +61,7 @@ html, body {
         height: 120px;
         text-align: center;
         overflow-y: scroll; }
-        .content .side .tag-and-folder .tags .tag {
+        .content .side .tag-and-folder .tags .user-tag {
           border: 0;
           margin-top: 5px;
           background-color: #f5f5f5;
@@ -73,7 +80,8 @@ html, body {
           margin-left: 40px;
           margin-top: 5px;
           font-size: 20px;
-          color: #8e8e8e; }
+          color: #8e8e8e;
+          cursor: pointer; }
       .content .side .tag-and-folder .folders::-webkit-scrollbar {
         display: none; }
     .content .side .service {
@@ -118,7 +126,63 @@ html, body {
     .content .main .bookmark-view {
       width: 100%;
       height: calc(100% - 60px);
-      background-color: #f5f5f5; }
+      background-color: #f5f5f5;
+      overflow-y: scroll; }
+      .content .main .bookmark-view .bookmark {
+        background-color: white;
+        border-radius: 10px;
+        width: 230px;
+        height: 270px;
+        display: inline-block;
+        margin-top: 30px;
+        margin-left: 30px;
+        margin-bottom: 30px; }
+        .content .main .bookmark-view .bookmark .bookmark-content {
+          width: 100%;
+          height: 100%;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center; }
+          .content .main .bookmark-view .bookmark .bookmark-content .info-field {
+            width: 210px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; }
+            .content .main .bookmark-view .bookmark .bookmark-content .info-field .name-field {
+              width: 100%;
+              height: 30px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center; }
+              .content .main .bookmark-view .bookmark .bookmark-content .info-field .name-field span {
+                font-size: 20px;
+                color: #515151; }
+              .content .main .bookmark-view .bookmark .bookmark-content .info-field .name-field img {
+                cursor: pointer; }
+            .content .main .bookmark-view .bookmark .bookmark-content .info-field .tag-field {
+              width: 100%;
+              height: 40px;
+              overflow: hidden; }
+              .content .main .bookmark-view .bookmark .bookmark-content .info-field .tag-field .tag-item {
+                display: inline-block;
+                position: relative;
+                margin-left: 5px;
+                margin-top: 8.5px; }
+                .content .main .bookmark-view .bookmark .bookmark-content .info-field .tag-field .tag-item button {
+                  border: 0;
+                  border-radius: 5px;
+                  background-color: #f5f5f5;
+                  cursor: default;
+                  color: #8e8e8e; }
+                .content .main .bookmark-view .bookmark .bookmark-content .info-field .tag-field .tag-item img {
+                  position: absolute;
+                  top: -5px;
+                  left: -5px;
+                  cursor: pointer; }
 
 .modal-setting {
   width: 500px;
@@ -283,7 +347,7 @@ html, body {
             display: inline-block;
             position: relative;
             margin-left: 5px;
-            margin-top: 8.5px; }
+            margin-top: 10px; }
             .modal-setting .modal-content .right .edit-tag .tags .tag-item button {
               border: 0;
               border-radius: 5px;
@@ -323,7 +387,7 @@ html, body {
 
 .modal-add-url {
   width: 600px;
-  height: 150px;
+  height: 290px;
   border-radius: 5px; }
   .modal-add-url .modal-content {
     width: 100%;
@@ -335,17 +399,17 @@ html, body {
     align-items: center; }
     .modal-add-url .modal-content .close-field {
       width: 100%;
-      height: calc(130px / 3);
+      height: 60px;
       display: flex;
       justify-content: flex-end; }
       .modal-add-url .modal-content .close-field img {
         cursor: pointer; }
     .modal-add-url .modal-content .url-input-field {
       width: 100%;
-      height: calc(130px / 3); }
+      height: 60px; }
       .modal-add-url .modal-content .url-input-field input {
         width: calc(100% - 15px);
-        height: 100%;
+        height: 50px;
         margin: 0;
         padding: 0;
         padding-left: 15px;
@@ -359,9 +423,38 @@ html, body {
       .modal-add-url .modal-content .url-input-field input[type=text]:focus {
         border-bottom: none;
         box-shadow: none; }
+    .modal-add-url .modal-content .name-input-field {
+      width: 100%;
+      height: 60px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .modal-add-url .modal-content .name-input-field input {
+        width: 50%;
+        height: 50px;
+        margin: 0;
+        padding: 0;
+        padding-left: 15px;
+        transition: none;
+        border-bottom: none;
+        border-radius: 10px;
+        background-color: #f5f5f5;
+        color: #8e8e8e; }
+      .modal-add-url .modal-content .name-input-field input[type=text]:focus + label {
+        color: #8e8e8e; }
+      .modal-add-url .modal-content .name-input-field input[type=text]:focus {
+        border-bottom: none;
+        box-shadow: none; }
+      .modal-add-url .modal-content .name-input-field a {
+        width: 40%; }
+      .modal-add-url .modal-content .name-input-field .btn, .modal-add-url .modal-content .name-input-field .btn-large {
+        background-color: #2c55cd; }
+      .modal-add-url .modal-content .name-input-field .btn:hover, .modal-add-url .modal-content .name-input-field .btn-large:hover {
+        background-color: #2c55cd; }
     .modal-add-url .modal-content .mouse-input-field {
       width: 100%;
-      height: calc(130px / 3);
+      height: 50px;
       display: flex;
       justify-content: space-between;
       align-items: center; }
