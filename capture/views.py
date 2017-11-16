@@ -29,48 +29,48 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyQt4.QtWebKit import *
 
-class Webshot(QObject):
-    def __init__(self, url="", out=None):
-        QObject.__init__(self)
-        self.url = url
-        if not out:
-            out = "web2png.%i.png"%int(time.time())
-        self.out = out
-        self.view = None
-        self.page = None
+class Screenshot(QWebView):
+    def __init__(self):
+        self.app = QApplication(sys.argv)
+        QWebView.__init__(self)
+        self._loaded = False
+        self.loadFinished.connect(self._loadFinished)
 
-    def shot(self):
-        self.view = QWebView()
-        self.view.load(QUrl(self.url))
-        self.view.show()
-        self.page = self.view.page()
-        self.connect(self.page, SIGNAL("loadFinished(bool)"), self.render)
-        print("loading...")
+    def capture(self, url, output_file):
+        self.load(QUrl(url))
+        self.wait_load()
+        # set to webpage size
+        frame = self.page().mainFrame()
+        self.page().setViewportSize(frame.contentsSize())
+        # render image
+        image = QImage(self.page().viewportSize(), QImage.Format_ARGB32)
+        painter = QPainter(image)
+        frame.render(painter)
+        painter.end()
+        print 'saving', output_file
+        image.save(output_file)
 
-    def render(self):
-        print("... done")
-        frame = self.page.currentFrame()
-        size = frame.contentsSize()
-        size.setWidth(size.width()+20)
-        size.setHeight(size.height()+10)
-        self.view.resize(size)
-        self.page.setViewportSize(size)
-        img = QImage(size, QImage.Format_ARGB32)
-        paint = QPainter(img)
-        print("rendering...")
-        frame.render(paint, QWebFrame.ContentsLayer)
-        paint.end()
-        img.save(self.out)
-        print("... done")
-        print("result: %s"%self.out)
-        QApplication.quit()
+    def wait_load(self, delay=0):
+        # process app events until page loaded
+        while not self._loaded:
+            self.app.processEvents()
+            time.sleep(delay)
+        self._loaded = False
+
+    def _loadFinished(self, result):
+        self._loaded = True
+
+s = Screenshot()
+i = raw_input('url: ')
+s.capture(i, 'website.png')
 
 
 @method_decorator(csrf_exempt, name='dispatch')
 class Index(View):
     def get(self, request):
         print('go py qt!')
-        Webshot("http://naver.com", '{}/wwww.png'.format(settings.MEDIA_ROOT)).shot()
+        s = Screenshot()
+        s.capture('http://naver.com', '{}/qqqq.png'.format(settings.MEDIA_ROOT))
         if request.user.is_authenticated():
             u = User.objects.get(username=request.user)
             print(u.username)
