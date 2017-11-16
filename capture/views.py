@@ -23,7 +23,6 @@ from capture.filters import BookmarkListFilter
 from capture.models import Folder, Tag, Bookmark
 from capture.serializers import FolderSerializer, TagSerializer, BookmarkSerializer
 
-
 @method_decorator(csrf_exempt, name='dispatch')
 class Index(View):
     def get(self, request):
