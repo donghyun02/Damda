@@ -23,9 +23,53 @@ from capture.filters import BookmarkListFilter
 from capture.models import Folder, Tag, Bookmark
 from capture.serializers import FolderSerializer, TagSerializer, BookmarkSerializer
 
+import sys
+import time
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
+from PyQt4.QtWebKit import *
+
+class Webshot(QObject):
+    def __init__(self, url="", out=None):
+        QObject.__init__(self)
+        self.url = url
+        if not out:
+            out = "web2png.%i.png"%int(time.time())
+        self.out = out
+        self.view = None
+        self.page = None
+
+    def shot(self):
+        self.view = QWebView()
+        self.view.load(QUrl(self.url))
+        self.view.show()
+        self.page = self.view.page()
+        self.connect(self.page, SIGNAL("loadFinished(bool)"), self.render)
+        print("loading...")
+
+    def render(self):
+        print("... done")
+        frame = self.page.currentFrame()
+        size = frame.contentsSize()
+        size.setWidth(size.width()+20)
+        size.setHeight(size.height()+10)
+        self.view.resize(size)
+        self.page.setViewportSize(size)
+        img = QImage(size, QImage.Format_ARGB32)
+        paint = QPainter(img)
+        print("rendering...")
+        frame.render(paint, QWebFrame.ContentsLayer)
+        paint.end()
+        img.save(self.out)
+        print("... done")
+        print("result: %s"%self.out)
+        QApplication.quit()
+
+
 @method_decorator(csrf_exempt, name='dispatch')
 class Index(View):
     def get(self, request):
+        Webshot("http://naver.com", '{}/wwww.png'.format(settings.MEDIA_ROOT))
         if request.user.is_authenticated():
             u = User.objects.get(username=request.user)
             print(u.username)
@@ -183,3 +227,4 @@ class ChangeProfileImageView(View):
             with open('{}/{}.{}'.format(settings.MEDIA_ROOT, fileName, extension), 'wb+') as destination:
                 for chunk in f.chunks():
                     destination.write(chunk)
+
