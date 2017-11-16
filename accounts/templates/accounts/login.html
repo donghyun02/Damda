@@ -196,6 +196,8 @@
 
                 $.ajax(settings).done(function (response) {
                     if(response['success'] == 'true') {
+                        localStorage.setItem('basic', btoa($('#email').val() + ':' + $('#password').val()));
+                        localStorage.getItem('basic');
                         document.location.href = '/app/';
                     }
                     else {

@@ -18,6 +18,7 @@ class Bookmark(models.Model):
     url = models.TextField()
     imageURL = models.TextField(blank=True, null=True)
     tags = models.ManyToManyField(Tag)
+    folderName = models.CharField(max_length=20, default='')
 
     def __str__(self):
         return self.name
