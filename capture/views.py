@@ -60,9 +60,9 @@ class Screenshot(QWebView):
     def _loadFinished(self, result):
         self._loaded = True
 
-s = Screenshot()
-i = raw_input('url: ')
-s.capture(i, 'website.png')
+# s = Screenshot()
+# i = raw_input('url: ')
+# s.capture(i, 'website.png')
 
 
 @method_decorator(csrf_exempt, name='dispatch')
