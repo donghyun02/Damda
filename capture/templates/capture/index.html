@@ -200,7 +200,7 @@
                     var settings = {
                         "async": true,
                         "crossDomain": true,
-                        "url": "/app/profile/",
+                        "url": "http://35.166.12.115/app/profile/",
                         "method": "POST",
                         "processData": false,
                         "contentType": false,
@@ -225,7 +225,7 @@
                         var settings = {
                             "async": true,
                             "crossDomain": true,
-                            "url": "/app/folders/",
+                            "url": "http://35.166.12.115/app/folders/",
                             "method": "POST",
                             "headers": {
                                 "content-type": "application/x-www-form-urlencoded",
@@ -250,7 +250,7 @@
                         var settings = {
                             "async": true,
                             "crossDomain": true,
-                            "url": "/app/tags/",
+                            "url": "http://35.166.12.115/app/tags/",
                             "method": "POST",
                             "headers": {
                                 "content-type": "application/x-www-form-urlencoded",
@@ -275,7 +275,7 @@
                         var settings = {
                             "async": true,
                             "crossDomain": true,
-                            "url": "/app/username/",
+                            "url": "http://35.166.12.115/app/username/",
                             "method": "POST",
                             "headers": {
                                 "content-type": "application/x-www-form-urlencoded",
@@ -300,7 +300,7 @@
                     var settings = {
                         "async": true,
                         "crossDomain": true,
-                        "url": "/app/bookmarks/",
+                        "url": "http://35.166.12.115/app/bookmarks/",
                         "method": "POST",
                         "headers": {
                             "content-type": "application/x-www-form-urlencoded",
@@ -332,7 +332,7 @@
                             var settings = {
                                 "async": true,
                                 "crossDomain": true,
-                                "url": `/app/bookmarks/${bookmarkID}`,
+                                "url": `http://35.166.12.115/app/bookmarks/${bookmarkID}`,
                                 "method": "PATCH",
                                 "headers": {
                                     "content-type": "application/x-www-form-urlencoded",
@@ -356,7 +356,7 @@
                         var settings = {
                             "async": true,
                             "crossDomain": true,
-                            "url": `/app/bookmarks/${bookmarkID}`,
+                            "url": `http://35.166.12.115/app/bookmarks/${bookmarkID}`,
                             "method": "PATCH",
                             "headers": {
                                 "content-type": "application/x-www-form-urlencoded",
@@ -384,7 +384,7 @@
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": `/app/bookmarks/?tags__name__exact=${tags}&owner__username__exact={{ user.username }}&folderName__exact=${folder}`,
+                    "url": `http://35.166.12.115/app/bookmarks/?tags__name__exact=${tags}&owner__username__exact={{ user.username }}&folderName__exact=${folder}`,
                     "method": "GET",
                     "headers": {
                         "content-type": "application/x-www-form-urlencoded"
@@ -472,7 +472,7 @@
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "/app/folders/?owner__username={{ user.username }}",
+                    "url": "http://35.166.12.115/app/folders/?owner__username={{ user.username }}",
                     "method": "GET",
                     "headers": {
                     "content-type": "application/x-www-form-urlencoded",
@@ -493,7 +493,7 @@
                             var settings = {
                                 "async": true,
                                 "crossDomain": true,
-                                "url": `/app/folders/${response[i].id}`,
+                                "url": `http://35.166.12.115/app/folders/${response[i].id}`,
                                 "method": "DELETE",
                                 "headers": {
                                     "content-type": "application/x-www-form-urlencoded",
@@ -517,7 +517,7 @@
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "/app/tags/?owner__username={{ user.username }}",
+                    "url": "http://35.166.12.115/app/tags/?owner__username={{ user.username }}",
                     "method": "GET",
                     "headers": {
                     "content-type": "application/x-www-form-urlencoded",
@@ -538,7 +538,7 @@
                             var settings = {
                                 "async": true,
                                 "crossDomain": true,
-                                "url": `/app/tags/${response[i].id}`,
+                                "url": `http://35.166.12.115/app/tags/${response[i].id}`,
                                 "method": "DELETE",
                                 "headers": {
                                     "content-type": "application/x-www-form-urlencoded",
@@ -563,7 +563,7 @@
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "/app/tags/?owner__username={{ user.username }}",
+                    "url": "http://35.166.12.115/app/tags/?owner__username={{ user.username }}",
                     "method": "GET",
                     "headers": {
                     "content-type": "application/x-www-form-urlencoded",
@@ -612,7 +612,7 @@
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "/app/folders/?owner__username={{ user.username }}",
+                    "url": "http://35.166.12.115/app/folders/?owner__username={{ user.username }}",
                     "method": "GET",
                     "headers": {
                     "content-type": "application/x-www-form-urlencoded",

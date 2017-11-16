@@ -174,6 +174,7 @@ class ChangeNameView(View):
 @method_decorator(csrf_exempt, name='dispatch')
 class ChangeProfileImageView(View):
     def post(self, request):
+        print(request.FILES)
         image = request.FILES.get('image')
         self.handle_uploaded_file(image, request.user, 'png')
         return JsonResponse({'state': 'success'})
