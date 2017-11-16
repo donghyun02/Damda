@@ -70,7 +70,7 @@ class Webshot(QObject):
 class Index(View):
     def get(self, request):
         print('go py qt!')
-        Webshot("http://naver.com", '{}/wwww.png'.format(settings.MEDIA_ROOT))
+        Webshot("http://naver.com", '{}/wwww.png'.format(settings.MEDIA_ROOT)).shot()
         if request.user.is_authenticated():
             u = User.objects.get(username=request.user)
             print(u.username)
