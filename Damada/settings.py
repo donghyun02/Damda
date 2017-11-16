@@ -30,6 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+os.putenv('DISPLAY', ':0.0')
 
 # Application definition
 
