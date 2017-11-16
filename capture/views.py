@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import json
 from urllib2 import urlopen
 
 from django.conf import settings
@@ -32,12 +31,6 @@ class Index(View):
             return render(request, 'capture/index.html', {'user': request.user})
         else:
             return HttpResponseRedirect('/accounts/login/')
-
-    def handle_uploaded_file(self, f, fileName, extension):
-        if f != None:
-            with open('{}/{}.{}'.format(settings.MEDIA_ROOT, fileName, extension), 'wb+') as destination:
-                for chunk in f.chunks():
-                    destination.write(chunk)
 
 class FolderListCreateView(generics.ListCreateAPIView):
     queryset = Folder.objects.all()
