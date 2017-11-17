@@ -66,11 +66,11 @@ class Register(View):
             return JsonResponse({'success': 'false', 'error': 'username', 'message': '이미 존재하는 이메일입니다.'})
         except:
             u = User.objects.create_user(username=username, password=password, last_name=lastName, first_name=firstName)
-            # f = open('{}/capture/images/default.png'.format(settings.STATIC_ROOT))
-            # f = File(f)
-            # print(type(f))
-            # self.handle_uploaded_file(f, u.username, 'png')
-            # print('test')
+            f = open('{}/capture/images/default.png'.format(settings.STATIC_ROOT))
+            f = File(f)
+            print(type(f))
+            self.handle_uploaded_file(f, u.username, 'png')
+            print('test')
             return JsonResponse({'success': 'true', 'message': '성공적으로 만들어졌습니다.'})
 
     def handle_uploaded_file(self, f, fileName, extension):
