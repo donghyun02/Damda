@@ -77,6 +77,8 @@ class BookmarkListCreateView(generics.ListCreateAPIView):
         folderName = request.POST.get('folderName')
         pk = serializer.data['id']
         bookmark = Bookmark.objects.get(pk=pk)
+        bookmark.imageURL = "/static/capture/images/bookmark.png"
+        bookmark.save()
         folder = Folder.objects.get(name=folderName, owner__username=request.user)
         folder.bookmarks.add(bookmark)
         folder.save()
