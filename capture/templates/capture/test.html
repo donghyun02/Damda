@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <style media="screen">
+            html, body {
+                height: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            .nav {
+                width: 100%;
+                height: 60px;
+                background: linear-gradient(to right, #276DFF, #2C54CC, #651DD3);
+            }
+
+            .nav span {
+                font-size: 26px;
+                color: white;
+            }
+
+            .content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .note {
+                position: absolute;
+                left: 50px;
+                top: 200px;
+                width: 150px;
+                height: 200px;
+                background-color: rgb(248, 236, 137);
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            textarea {
+                width: 100px;
+                height: 150px;
+                border: 0;
+                background-color: rgb(248, 236, 137)
+            }
+            textarea::-webkit-scrollbar {
+                display: none;
+            }
+            #add {
+                position: fixed;
+                right: 50px;
+                bottom: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="nav">
+            <span>Damda</span>
+        </div>
+        <div class="content">
+            <img src="/static/capture/images/website.png" alt="">
+        </div>
+        <img id="add" src="/static/capture/images/plus.png" alt="">
+
+        <script type="text/javascript">
+            var count = 0;
+            var addNoteMode = false;
+
+            $(document).on('click', (e) => {
+                if(e.target.id == 'add') {
+                    addNoteMode = true;
+                }
+                else {
+                    if(addNoteMode) {
+                        let style = {
+                            'position': 'absolute',
+                            'left': e.pageX,
+                            'top': e.pageY
+                        }
+                        $('.content').append(`
+                            <div id="${count}" class="note">
+                                <textarea></textarea>
+                            </div>
+                        `);
+                        $( function() {
+                            $(`#${count}`).draggable();
+                          } );
+                        $(`#${count++}`).css(style);
+                        addNoteMode = false;
+                    }
+                }
+            });
+
+            $('#add').on('click', () => {
+            });
+        </script>
+    </body>
+</html>

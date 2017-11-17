@@ -180,3 +180,6 @@ class ChangeProfileImageView(View):
                 for chunk in f.chunks():
                     destination.write(chunk)
 
+class TestView(View):
+    def get(self, request):
+        return render(request, 'capture/test.html')

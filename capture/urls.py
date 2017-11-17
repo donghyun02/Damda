@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^bookmarks/(?P<pk>[0-9]+)$', views.BookmarkRetrieveUpdateDestroyView.as_view()),
     url(r'^username/$', views.ChangeNameView.as_view()),
     url(r'^profile/$', views.ChangeProfileImageView.as_view()),
+    url(r'^test/$', views.TestView.as_view()),
 ]
