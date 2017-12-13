@@ -110,7 +110,7 @@ class BookmarkListCreateView(generics.ListCreateAPIView):
                 imageURL = "/static/capture/images/bookmark.png"
 
             bookmark.imageURL = imageURL
-            bookmark.url = 'http://127.0.0.1:8000/app/test'
+            bookmark.url = 'http://35.166.12.115:4000/app/test'
             bookmark.save()
 
             serializer = BookmarkSerializer(bookmark)
