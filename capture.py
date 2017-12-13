@@ -37,8 +37,10 @@ class Screenshot(QWebView):
 
 def main(arg):
     print(arg)
+    # f = open('./capture/static/website.png', 'w')
+    # f.close()
     s = Screenshot()
-    s.capture(arg, 'website.png')
+    s.capture(arg, './capture/static/capture/images/website.png')
 
 if __name__ == "__main__":
     main(sys.argv[1])

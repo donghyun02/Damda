@@ -74,44 +74,85 @@ class BookmarkListCreateView(generics.ListCreateAPIView):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
 
-        os.system("python capture.py test")
+        check = request.POST.get('check')
 
-        folderName = request.POST.get('folderName')
-        pk = serializer.data['id']
-        bookmark = Bookmark.objects.get(pk=pk)
-        bookmark.imageURL = "/static/capture/images/bookmark.png"
-        bookmark.save()
-        folder = Folder.objects.get(name=folderName, owner__username=request.user)
-        folder.bookmarks.add(bookmark)
-        folder.save()
-        print('1')
-        try:
+        if check == 'true':
+            os.system("python capture.py {}".format(request.POST.get('url')))
+            folderName = request.POST.get('folderName')
+            pk = serializer.data['id']
+            bookmark = Bookmark.objects.get(pk=pk)
+            bookmark.imageURL = "/static/capture/images/bookmark.png"
+            bookmark.save()
+            folder = Folder.objects.get(name=folderName, owner__username=request.user)
+            folder.bookmarks.add(bookmark)
+            folder.save()
+            print('1')
             try:
-                url = request.POST.get('url')
-                urlopen(url)
-                webpage = urlopen(url).read()
-                soup = BeautifulSoup(webpage, "html.parser")
-                imageURL = soup.find('meta', property='og:image')
-                imageURL = imageURL['content'] if url else "/static/capture/images/bookmark.png"
-            except:
                 try:
-                    url = 'http://' + request.POST.get('url')
+                    url = request.POST.get('url')
+                    urlopen(url)
                     webpage = urlopen(url).read()
                     soup = BeautifulSoup(webpage, "html.parser")
                     imageURL = soup.find('meta', property='og:image')
                     imageURL = imageURL['content'] if url else "/static/capture/images/bookmark.png"
                 except:
-                    print('what?')
-                    imageURL = "/static/capture/images/bookmark.png"
-        except:
-            print('test')
-            imageURL = "/static/capture/images/bookmark.png"
+                    try:
+                        url = 'http://' + request.POST.get('url')
+                        webpage = urlopen(url).read()
+                        soup = BeautifulSoup(webpage, "html.parser")
+                        imageURL = soup.find('meta', property='og:image')
+                        imageURL = imageURL['content'] if url else "/static/capture/images/bookmark.png"
+                    except:
+                        print('what?')
+                        imageURL = "/static/capture/images/bookmark.png"
+            except:
+                print('test')
+                imageURL = "/static/capture/images/bookmark.png"
 
-        bookmark.imageURL = imageURL
-        bookmark.save()
+            bookmark.imageURL = imageURL
+            bookmark.url = 'http://127.0.0.1:8000/app/test'
+            bookmark.save()
 
-        serializer = BookmarkSerializer(bookmark)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+            serializer = BookmarkSerializer(bookmark)
+            return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+        else:
+            folderName = request.POST.get('folderName')
+            pk = serializer.data['id']
+            bookmark = Bookmark.objects.get(pk=pk)
+            bookmark.imageURL = "/static/capture/images/bookmark.png"
+            bookmark.save()
+            folder = Folder.objects.get(name=folderName, owner__username=request.user)
+            folder.bookmarks.add(bookmark)
+            folder.save()
+            print('1')
+            try:
+                try:
+                    url = request.POST.get('url')
+                    urlopen(url)
+                    webpage = urlopen(url).read()
+                    soup = BeautifulSoup(webpage, "html.parser")
+                    imageURL = soup.find('meta', property='og:image')
+                    imageURL = imageURL['content'] if url else "/static/capture/images/bookmark.png"
+                except:
+                    try:
+                        url = 'http://' + request.POST.get('url')
+                        webpage = urlopen(url).read()
+                        soup = BeautifulSoup(webpage, "html.parser")
+                        imageURL = soup.find('meta', property='og:image')
+                        imageURL = imageURL['content'] if url else "/static/capture/images/bookmark.png"
+                    except:
+                        print('what?')
+                        imageURL = "/static/capture/images/bookmark.png"
+            except:
+                print('test')
+                imageURL = "/static/capture/images/bookmark.png"
+
+            bookmark.imageURL = imageURL
+            bookmark.save()
+
+            serializer = BookmarkSerializer(bookmark)
+            return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 class BookmarkRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Bookmark.objects.all()

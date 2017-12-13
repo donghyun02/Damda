@@ -295,7 +295,16 @@
                 $('#add-url-submit').on('click', () => {
                     let url = $('#bookmark-url').val();
                     let name = $('#bookmark-url-name').val();
+                    let check;
                     let folderName = selectedFolderInAddBookmark;
+
+                    if($('#bookmark-capture').prop('checked')) {
+                        check = 'true'
+                    }
+                    else {
+                        check = 'false'
+                    }
+
                     console.log(`url: ${url} / name: ${name} / folder: ${folderName}`);
                     var settings = {
                         "async": true,
@@ -309,7 +318,8 @@
                         "data": {
                             "name": name,
                             "folderName": folderName,
-                            "url": url
+                            "url": url,
+                            "check": check
                         }
                     }
 
