@@ -1,26 +1,26 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import os
 from urllib2 import urlopen
 
+from bs4 import BeautifulSoup
 from django.conf import settings
 from django.contrib.auth.models import User
-from django.core.files import File
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
-
 # Create your views here.
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
-from bs4 import BeautifulSoup
 from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
 
-from capture.filters import BookmarkListFilter
-from capture.models import Folder, Tag, Bookmark
-from capture.serializers import FolderSerializer, TagSerializer, BookmarkSerializer
+from .filters import BookmarkListFilter
+from .models import Folder, Tag, Bookmark
+from .serializers import FolderSerializer, TagSerializer, BookmarkSerializer
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class Index(View):
@@ -73,6 +73,8 @@ class BookmarkListCreateView(generics.ListCreateAPIView):
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
+
+        os.system("python capture.py test")
 
         folderName = request.POST.get('folderName')
         pk = serializer.data['id']

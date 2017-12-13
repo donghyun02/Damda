@@ -1,7 +1,8 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from capture.models import Folder, Bookmark, Tag
+from .models import Folder, Bookmark, Tag
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

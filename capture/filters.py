@@ -1,6 +1,6 @@
 import django_filters
 
-from capture.models import Bookmark
+from .models import Bookmark
 
 
 class MultiValueCharFilter(django_filters.filters.BaseCSVFilter, django_filters.filters.CharFilter):
