@@ -77,7 +77,7 @@ class BookmarkListCreateView(generics.ListCreateAPIView):
         check = request.POST.get('check')
 
         if check == 'true':
-            os.system("python capture.py {}".format(request.POST.get('url')))
+            os.system("xvfb-run python capture.py {}".format(request.POST.get('url')))
             folderName = request.POST.get('folderName')
             pk = serializer.data['id']
             bookmark = Bookmark.objects.get(pk=pk)
