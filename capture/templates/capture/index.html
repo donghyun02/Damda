@@ -144,7 +144,11 @@
                     <input id="edit-bookmark-tag" type="text" name="" value="">
                     <img src="/static/capture/images/submit.png" width="13px" height="13px">
                 </div>
-                <button id="edit-bookmark-submit" type="button" name="button">편집 완료</button>
+                <div class="button-field">
+                    <button id="edit-bookmark-submit" type="button" name="button">편집 완료</button>
+                    <button id="delete-bookmark" type="button" name="button">삭제</button>
+                </div>
+
             </div>
         </div>
 
@@ -155,6 +159,7 @@
             var userTags = [];
             var selectedFolderInAddBookmark = '';
             var token = localStorage.getItem('basic');
+            var currentEditingContainerID = '';
 
             $(document).ready(() => {
                 initSetting();
@@ -387,6 +392,24 @@
                     }
                     $('#edit-bookmark-tag').val('');
                 });
+                $('#delete-bookmark').on('click', () => {
+                    var settings = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": `/app/bookmarks/${currentEditingContainerID}`,
+                        "method": "DELETE",
+                        "headers": {
+                            "content-type": "application/x-www-form-urlencoded"
+                        }
+                    }
+
+                    $.ajax(settings).done(function (response) {
+                        getSideMenuTag();
+                        getSideMenuFolder();
+                        getBookmark(selectedFolder, selectedTags);
+                        $('#edit-url-popup').css('display', 'none');
+                    });
+                });
             }
 
             function getBookmark(folder, tags) {
@@ -448,6 +471,8 @@
                         let button = $(e.target);
                         let folderName = e.target.id.split('-');
                         id = folderName[folderName.length - 2];
+                        currentEditingContainerID = String(id);
+                        console.log(currentEditingContainerID);
                         folderName = folderName[folderName.length - 1];
 
                         $('#edit-bookmark-folders').empty();
