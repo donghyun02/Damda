@@ -35,12 +35,11 @@ class Screenshot(QWebView):
     def _loadFinished(self, result):
         self._loaded = True
 
-def main(arg):
-    print(arg)
-    # f = open('./capture/static/website.png', 'w')
-    # f.close()
+def main(url, fileName):
+    print(url)
+    print(fileName)
     s = Screenshot()
-    s.capture(arg, './capture/static/capture/images/website.png')
+    s.capture(url, './capture/static/capture/images/{}.png'.format(fileName))
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    main(sys.argv[1], sys.argv[2])

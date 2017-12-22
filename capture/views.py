@@ -73,11 +73,10 @@ class BookmarkListCreateView(generics.ListCreateAPIView):
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-
         check = request.POST.get('check')
 
         if check == 'true':
-            os.system("xvfb-run python capture.py {}".format(request.POST.get('url')))
+            os.system("xvfb-run python capture.py {} {}".format(request.POST.get('url'), "testFile"))
             folderName = request.POST.get('folderName')
             pk = serializer.data['id']
             bookmark = Bookmark.objects.get(pk=pk)
@@ -86,7 +85,7 @@ class BookmarkListCreateView(generics.ListCreateAPIView):
             folder = Folder.objects.get(name=folderName, owner__username=request.user)
             folder.bookmarks.add(bookmark)
             folder.save()
-            print('1')
+
             try:
                 try:
                     url = request.POST.get('url')

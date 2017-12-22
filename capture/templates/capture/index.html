@@ -685,6 +685,7 @@
                 });
                 $('#add-url').on('click', () => {
                     $('#modal-add-url').modal('open');
+                    $('#dropdown1').empty();
 
                     for(let i in userFolders) {
                         $('#dropdown1').append(`
