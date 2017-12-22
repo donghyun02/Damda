@@ -30,3 +30,9 @@ class Folder(models.Model):
 
     def __str__(self):
         return self.name
+
+class Note(models.Model):
+    x = models.CharField(max_length=40)
+    y = models.CharField(max_length=40)
+    bookmark = models.ForeignKey(Bookmark)
+    text = models.TextField(default='')
