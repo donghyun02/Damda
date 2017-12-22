@@ -77,21 +77,18 @@ class BookmarkListCreateView(generics.ListCreateAPIView):
         pk = serializer.data['id']
         folderName = request.POST.get('folderName')
         check = request.POST.get('check')
-
-        if check == 'true':
-            os.system("xvfb-run python capture.py {} {}".format(request.POST.get('url'), pk))
+        url = request.POST.get('url')
 
         bookmark = Bookmark.objects.get(pk=pk)
-        bookmark.imageURL = "/static/capture/images/bookmark.png"
+        bookmark.imageURL = self.getMetaImage(url)
+        if check == 'true':
+            os.system("xvfb-run python capture.py {} {}".format(request.POST.get('url'), pk))
+            bookmark.url = "http://35.166.12.115:4000/app/capture/{}".format(pk)
         bookmark.save()
 
         folder = Folder.objects.get(name=folderName, owner__username=request.user)
         folder.bookmarks.add(bookmark)
         folder.save()
-
-        url = request.POST.get('url')
-        bookmark.imageURL = self.getMetaImage(url)
-        bookmark.save()
 
         serializer = BookmarkSerializer(bookmark)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
@@ -116,6 +113,13 @@ class BookmarkListCreateView(generics.ListCreateAPIView):
         except:
             imageURL = "/static/capture/images/bookmark.png"
         return imageURL
+
+class CaptureView(View):
+    def get(self, request, *args, **kwargs):
+        print("PK: {}".format(kwargs['pk']))
+        pk = kwargs['pk']
+        image = '/static/capture/images/{}.png'.format(pk)
+        return render(request, 'capture/test.html', {'image': image})
 
 class BookmarkRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Bookmark.objects.all()
