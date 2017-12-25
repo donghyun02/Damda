@@ -158,8 +158,18 @@
                         console.log('blured!');
                         patchNote(notes[i].id, $(`#${notes[i].id} textarea`).val());
                     });
-                    $(`#${notes[i].id}`).on("sortupdate", (event, ui) => {
-                        console.log('moveend!');
+                    // $(`#${notes[i].id}`).on("sortupdate", (event, ui) => {
+                    //     console.log('moveend!');
+                    // });
+                    $(`#${notes[i].id}`).sortable({
+                        start: function(event, ui) {
+                            console.log('start');
+                        },
+                        stop: function(event, ui) {
+                            console.log('stop');
+                        },
+                        update: function(event, ui) {
+                            console.log('update');
                     });
                 }
             }
