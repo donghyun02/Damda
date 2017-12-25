@@ -167,6 +167,7 @@
                     });
                     $(`#${notes[i].id}-close`).on("click", () => {
                         console.log("close button clicked");
+                        console.log(notes[i].id);
                         deleteNote(notes[i].id);
                     });
                 }
