@@ -79,6 +79,11 @@
             var addNoteMode = false;
             var notes;
 
+            $(document).ready(() => {
+                getNote();
+                appendNote();
+            });
+
             $(document).on('click', (e) => {
                 if(e.target.id == 'add') {
                     addNoteMode = true;
@@ -87,21 +92,6 @@
                     if(addNoteMode) {
                         createNote(e.pageX, e.pageY);
                         getNote();
-                        console.log("notes!!: " + notes);
-                        let style = {
-                            'position': 'absolute',
-                            'left': e.pageX,
-                            'top': e.pageY
-                        }
-                        $('.content').append(`
-                            <div id="${count}" class="note">
-                                <textarea></textarea>
-                            </div>
-                        `);
-                        $( function() {
-                            $(`#${count}`).draggable();
-                          } );
-                        $(`#${count++}`).css(style);
                         addNoteMode = false;
                     }
                 }
@@ -132,7 +122,7 @@
                 var settings = {
                     "async": false,
                     "crossDomain": true,
-                    "url": "/app/notes/",
+                    "url": "/app/notes/?book={{ pk }}",
                     "method": "GET",
                     "headers": {
                         "content-type": "application/x-www-form-urlencoded",
@@ -144,6 +134,24 @@
                     notes = response;
                     console.log(notes);
                 });
+            }
+            function appendNote() {
+                for i in notes {
+                    let style = {
+                        'position': 'absolute',
+                        'left': notes[i].x,
+                        'top': notes[i].y
+                    }
+                    $('.content').append(`
+                        <div id="${notes[i].id}" class="note">
+                            <textarea></textarea>
+                        </div>
+                    `);
+                    $(() => {
+                        $(`#${notes[i].id}`).draggable();
+                    });
+                    $(`#${notes[i].id}`).css(style);
+                }
             }
         </script>
     </body>
