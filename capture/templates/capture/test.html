@@ -166,6 +166,7 @@
                         patchNoteOfText(notes[i].id, $(`#${notes[i].id} textarea`).val());
                     });
                     $(`${notes[i].id}-close`).on("click", () => {
+                        console.log("close button clicked");
                         deleteNote(notes[i].id);
                     });
                 }
