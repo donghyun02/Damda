@@ -209,3 +209,7 @@ class NoteListCreateView(generics.ListCreateAPIView):
         serializer = NoteSerializer(note)
 
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+class NoteRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Note.objects.all()
+    serializer_class = NoteSerializer
