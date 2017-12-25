@@ -150,9 +150,14 @@
                             <textarea>${notes[i].text}</textarea>
                         </div>
                     `);
-                    $(() => {
-                        $(`#${notes[i].id}`).draggable();
-                    });
+
+                    $(`#${notes[i].id}`).draggable(
+                        {
+                            drag: function() {
+                                console.log("draged!");
+                            }
+                        }
+                    );
                     $(`#${notes[i].id}`).css(style);
                     $(`#${notes[i].id}`).focusout(() => {
                         console.log('blured!');
@@ -161,17 +166,6 @@
                     // $(`#${notes[i].id}`).on("sortupdate", (event, ui) => {
                     //     console.log('moveend!');
                     // });
-                    $(`#${notes[i].id}`).sortable({
-                        start: function(event, ui) {
-                            console.log('start');
-                        },
-                        stop: function(event, ui) {
-                            console.log('stop');
-                        },
-                        update: function(event, ui) {
-                            console.log('update');
-                        }
-                    });
                 }
             }
             function patchNote(id, text) {
