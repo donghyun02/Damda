@@ -81,6 +81,9 @@
 
             $(document).ready(() => {
                 getNote();
+                $('.note').blur(() => {
+                    console.log("blured!");
+                });
             });
 
             $(document).on('click', (e) => {
