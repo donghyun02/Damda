@@ -162,13 +162,10 @@
                     );
                     $(`#${notes[i].id}`).css(style);
                     $(`#${notes[i].id}`).focusout(() => {
-                        console.log('blured!');
                         patchNoteOfText(notes[i].id, $(`#${notes[i].id} textarea`).val());
                     });
                     $(`#${notes[i].id}-close`).on("click", (e) => {
-                        console.log("close button clicked");
                         id = e.target.id.split('-')[0];
-                        console.log(id);
                         deleteNote(id);
                     });
                 }
