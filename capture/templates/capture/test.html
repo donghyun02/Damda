@@ -165,6 +165,9 @@
                         console.log('blured!');
                         patchNoteOfText(notes[i].id, $(`#${notes[i].id} textarea`).val());
                     });
+                    $(`${notes[i].id}-close`).on("click", () => {
+                        deleteNote(notes[i].id);
+                    });
                 }
             }
             function patchNoteOfText(id, text) {
@@ -204,6 +207,23 @@
 
                 $.ajax(settings).done(function (response) {
                     console.log(response);
+                });
+            }
+            function deleteNote(id) {
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": `/app/notes/${id}/`,
+                    "method": "DELETE",
+                    "headers": {
+                        "content-type": "application/x-www-form-urlencoded",
+                        "cache-control": "no-cache"
+                    }
+                }
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                    getNote();
                 });
             }
         </script>
