@@ -155,7 +155,9 @@
                                 console.log("stoped!");
                                 console.log(e.pageX);
                                 console.log(e.pageY);
-                                patchNoteOfPosition(notes[i].id, e.pageX, e.pageY);
+                                console.log($(this).position().left);
+                                console.log($(this).position().top);
+                                patchNoteOfPosition(notes[i].id, $(this).position().left, $(this).position().top);
                             }
                         }
                     );
