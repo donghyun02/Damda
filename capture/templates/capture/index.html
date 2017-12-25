@@ -671,7 +671,8 @@
                         `);
                     }
                     $('#show-all').on('click', (e) => {
-                        getBookmark('', selectedTags);
+                        selectedFolder = '';
+                        getBookmark(selectedFolder, selectedTags);
                         $('#nav-folder-name').text("전체");
                     });
                     $('.side-folder-text').on('click', (e) => {
