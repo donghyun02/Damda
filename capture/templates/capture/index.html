@@ -222,9 +222,6 @@
                     getEditPageTag();
                     getEditPageFolder();
                 });
-                $('#edit-bookmark-submit').on('click', () => {
-                    $('#edit-url-popup').css('display', 'none');
-                });
                 $('#setting-folder-submit').on('click', () => {
                     let folderName = $('#setting-folder-name').val();
                     if(folderName != '') {
@@ -335,6 +332,7 @@
                     });
                     selectedFolderInAddBookmark = '';
                 });
+
                 $('#edit-bookmark-submit').on('click', () => {
                     let bookmarkID;
                     $('.edit-bookmark-folder').each((e, target) => {
@@ -346,7 +344,7 @@
                             folderName = $(target).text();
 
                             var settings = {
-                                "async": true,
+                                "async": false,
                                 "crossDomain": true,
                                 "url": `/app/bookmarks/${bookmarkID}/`,
                                 "method": "PATCH",
@@ -370,7 +368,7 @@
                         console.log('REQUEST');
                         tag = $('#edit-bookmark-tag').val();
                         var settings = {
-                            "async": true,
+                            "async": false,
                             "crossDomain": true,
                             "url": `/app/bookmarks/${bookmarkID}/`,
                             "method": "PATCH",
@@ -391,7 +389,9 @@
 
                     }
                     $('#edit-bookmark-tag').val('');
+                    $('#edit-url-popup').css('display', 'none');
                 });
+
                 $('#delete-bookmark').on('click', () => {
                     var settings = {
                         "async": true,
