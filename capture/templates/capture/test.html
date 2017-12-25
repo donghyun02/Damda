@@ -158,6 +158,9 @@
                         console.log('blured!');
                         patchNote(notes[i].id, $(`#${notes[i].id} textarea`).val());
                     });
+                    $(`#${notes[i].id}`).bind("moveend", () => {
+                        console.log('moveend!');
+                    });
                 }
             }
             function patchNote(id, text) {
