@@ -85,6 +85,7 @@
                 else {
                     if(addNoteMode) {
                         createNote(e.pageX, e.pageY);
+                        getNote();
                         let style = {
                             'position': 'absolute',
                             'left': e.pageX,
@@ -124,6 +125,25 @@
                 $.ajax(settings).done(function (response) {
                     console.log(response);
                 });
+            }
+            function getNote() {
+                var notes;
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "/app/notes/",
+                    "method": "GET",
+                    "headers": {
+                        "content-type": "application/x-www-form-urlencoded",
+                        "cache-control": "no-cache"
+                    }
+                }
+
+                $.ajax(settings).done(function (response) {
+                    notes = response
+                });
+                console.log("notes: " + notes);
+                return notes;
             }
         </script>
     </body>
