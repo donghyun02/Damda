@@ -130,7 +130,7 @@
             }
             function getNote() {
                 var settings = {
-                    "async": true,
+                    "async": false,
                     "crossDomain": true,
                     "url": "/app/notes/",
                     "method": "GET",
@@ -141,8 +141,7 @@
                 }
 
                 $.ajax(settings).done(function (response) {
-                    notes = response
-                    console.log("notes test: " + notes);
+                    notes = response;
                 });
             }
         </script>
