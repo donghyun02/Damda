@@ -344,7 +344,7 @@
                             folderName = $(target).text();
 
                             var settings = {
-                                "async": false,
+                                "async": true,
                                 "crossDomain": true,
                                 "url": `/app/bookmarks/${bookmarkID}/`,
                                 "method": "PATCH",
@@ -368,7 +368,7 @@
                         console.log('REQUEST');
                         tag = $('#edit-bookmark-tag').val();
                         var settings = {
-                            "async": false,
+                            "async": true,
                             "crossDomain": true,
                             "url": `/app/bookmarks/${bookmarkID}/`,
                             "method": "PATCH",
