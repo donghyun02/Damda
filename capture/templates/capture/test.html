@@ -87,6 +87,7 @@
                     if(addNoteMode) {
                         createNote(e.pageX, e.pageY);
                         getNote();
+                        console.log("notes!!: " + notes);
                         let style = {
                             'position': 'absolute',
                             'left': e.pageX,
@@ -142,8 +143,6 @@
                 $.ajax(settings).done(function (response) {
                     notes = response
                 });
-                console.log("notes: " + notes);
-                return notes;
             }
         </script>
     </body>
