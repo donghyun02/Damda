@@ -159,7 +159,7 @@
                                 console.log($(`#${notes[i].id}`).position().left);
                                 console.log($(`#${notes[i].id}`).offset().top);
                                 console.log($(`#${notes[i].id}`).offset().left);
-                                patchNoteOfPosition(notes[i].id, e.pageX, e.pageY);
+                                patchNoteOfPosition(notes[i].id, $(`#${notes[i].id}`).position().top, $(`#${notes[i].id}`).position().left);
                             }
                         }
                     );
