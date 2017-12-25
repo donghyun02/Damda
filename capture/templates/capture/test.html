@@ -153,8 +153,8 @@
                         {
                             stop: function(e) {
                                 console.log("stoped!");
-                                console.log($(`#${notes[i].id}`).pageX);
-                                console.log($(`#${notes[i].id}`).pageY);
+                                console.log(e.target.pageX);
+                                console.log(e.target.pageY);
                                 console.log($(`#${notes[i].id}`).position().top);
                                 console.log($(`#${notes[i].id}`).position().left);
                                 console.log($(`#${notes[i].id}`).offset().top);
