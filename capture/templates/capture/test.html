@@ -155,6 +155,8 @@
                                 console.log("stoped!");
                                 console.log(e.pageX);
                                 console.log(e.pageY);
+                                console.log(e.target.position.top);
+                                console.log(e.target.position.left);
                                 patchNoteOfPosition(notes[i].id, e.pageX, e.pageY);
                             }
                         }
