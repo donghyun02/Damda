@@ -158,7 +158,7 @@
                         console.log('blured!');
                         patchNote(notes[i].id, $(`#${notes[i].id} textarea`).val());
                     });
-                    $(`#${notes[i].id}`).resize(() => {
+                    $(`#${notes[i].id}`).on("sortupdate", () => {
                         console.log('moveend!');
                     });
                 }
