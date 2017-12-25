@@ -77,6 +77,7 @@
         <script type="text/javascript">
             var count = 0;
             var addNoteMode = false;
+            var notes;
 
             $(document).on('click', (e) => {
                 if(e.target.id == 'add') {
@@ -127,7 +128,6 @@
                 });
             }
             function getNote() {
-                var notes;
                 var settings = {
                     "async": true,
                     "crossDomain": true,
