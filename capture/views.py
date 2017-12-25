@@ -114,13 +114,6 @@ class BookmarkListCreateView(generics.ListCreateAPIView):
             imageURL = "/static/capture/images/bookmark.png"
         return imageURL
 
-class CaptureView(View):
-    def get(self, request, *args, **kwargs):
-        print("PK: {}".format(kwargs['pk']))
-        pk = kwargs['pk']
-        image = '/static/capture/images/{}.png'.format(pk)
-        return render(request, 'capture/test.html', {'image': image})
-
 class BookmarkRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Bookmark.objects.all()
     serializer_class = BookmarkSerializer
@@ -190,6 +183,10 @@ class ChangeProfileImageView(View):
                 for chunk in f.chunks():
                     destination.write(chunk)
 
-class TestView(View):
-    def get(self, request):
-        return render(request, 'capture/test.html')
+class CaptureView(View):
+    def get(self, request, *args, **kwargs):
+        pk = kwargs['pk']
+        b = Bookmark.objects.get(pk=pk)
+        print(b)
+        image = '/static/capture/images/{}.png'.format(pk)
+        return render(request, 'capture/test.html', {'image': image})
