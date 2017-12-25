@@ -658,11 +658,21 @@
                 $.ajax(settings).done(function (response) {
                     userFolders = response
                     $('#side-folder-field').empty();
+                    var max = 0;
+                    for(let i in response) {
+                        max += response[i].bookmarks.length;
+                    }
+                    $('#side-folder-field').append(`
+                        <span id="show-all" class="folder">전체 (${max})</span>
+                    `);
                     for(let i in response) {
                         $('#side-folder-field').append(`
                             <span class="folder side-folder-text">${response[i].name} (${response[i].bookmarks.length})</span>
                         `);
                     }
+                    $('#show-all').on('click', (e) => {
+                        getBookmark('', selectedTags);
+                    });
                     $('.side-folder-text').on('click', (e) => {
                         $('#edit-url-popup').css('display', 'none');
                         let text = $(e.target).text().split(' (')[0];
