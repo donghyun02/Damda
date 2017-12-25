@@ -81,7 +81,6 @@
 
             $(document).ready(() => {
                 getNote();
-                appendNote();
             });
 
             $(document).on('click', (e) => {
@@ -92,7 +91,6 @@
                     if(addNoteMode) {
                         createNote(e.pageX, e.pageY);
                         getNote();
-                        appendNote();
                         addNoteMode = false;
                     }
                 }
@@ -134,9 +132,11 @@
                 $.ajax(settings).done(function (response) {
                     notes = response;
                     console.log(notes);
+                    appendNote();
                 });
             }
             function appendNote() {
+                $('.note').remove();
                 for(i in notes) {
                     console.log(`x: ${notes[i].x}`);
                     console.log(`y: ${notes[i].y}`);
