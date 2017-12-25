@@ -81,9 +81,6 @@
 
             $(document).ready(() => {
                 getNote();
-                $('.note').blur(() => {
-                    console.log("blured!");
-                });
             });
 
             $(document).on('click', (e) => {
@@ -157,6 +154,9 @@
                         $(`#${notes[i].id}`).draggable();
                     });
                     $(`#${notes[i].id}`).css(style);
+                    $(`#${notes[i].id}`).blur(() => {
+                        console.log('blured!');
+                    });
                 }
             }
         </script>
