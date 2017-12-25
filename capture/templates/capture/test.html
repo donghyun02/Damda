@@ -156,8 +156,28 @@
                     $(`#${notes[i].id}`).css(style);
                     $(`#${notes[i].id}`).focusout(() => {
                         console.log('blured!');
+                        patchNote(notes[i].id, $(`#${notes[i].id} textarea`).val());
                     });
                 }
+            }
+            function patchNote(id, text) {
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": `/app/notes/${id}`,
+                    "method": "PATCH",
+                    "headers": {
+                        "content-type": "application/x-www-form-urlencoded",
+                        "cache-control": "no-cache"
+                    },
+                    "data": {
+                        "text": text,
+                    }
+                }
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                });
             }
         </script>
     </body>
