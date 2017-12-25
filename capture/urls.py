@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^username/$', views.ChangeNameView.as_view()),
     url(r'^profile/$', views.ChangeProfileImageView.as_view()),
     url(r'^capture/(?P<pk>[0-9]+)$', views.CaptureView.as_view()),
+    url(r'^notes/$', views.NoteListCreateView.as_view()),
 ]

@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from .models import Folder, Bookmark, Tag
+from .models import Folder, Bookmark, Tag, Note
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -31,3 +31,10 @@ class FolderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Folder
         fields = ('id', 'name', 'owner', 'bookmarks')
+
+class NoteSerializer(serializers.ModelSerializer):
+    bookmark = BookmarkSerializer(read_only=True)
+
+    class Meta:
+        model = Note
+        fields = ('id', 'x', 'y', 'bookmark', 'text')

@@ -84,6 +84,7 @@
                 }
                 else {
                     if(addNoteMode) {
+                        createNote(e.pageX, e.pageY);
                         let style = {
                             'position': 'absolute',
                             'left': e.pageX,
@@ -103,8 +104,27 @@
                 }
             });
 
-            $('#add').on('click', () => {
-            });
+            function createNote(x, y) {
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "/app/notes/",
+                    "method": "GET",
+                    "headers": {
+                        "content-type": "application/x-www-form-urlencoded",
+                        "cache-control": "no-cache"
+                    },
+                    "data": {
+                        "x": `${x}`,
+                        "y": `${y}`,
+                        "bookmarkPK": "{{ pk }}"
+                    }
+                }
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                });
+            }
         </script>
     </body>
 </html>

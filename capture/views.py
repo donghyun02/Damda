@@ -18,9 +18,8 @@ from rest_framework import status
 from rest_framework.response import Response
 
 from .filters import BookmarkListFilter
-from .models import Folder, Tag, Bookmark
-from .serializers import FolderSerializer, TagSerializer, BookmarkSerializer
-
+from .models import Folder, Tag, Bookmark, Note
+from .serializers import FolderSerializer, TagSerializer, BookmarkSerializer, NoteSerializer
 
 @method_decorator(csrf_exempt, name='dispatch')
 class Index(View):
@@ -186,7 +185,27 @@ class ChangeProfileImageView(View):
 class CaptureView(View):
     def get(self, request, *args, **kwargs):
         pk = kwargs['pk']
-        b = Bookmark.objects.get(pk=pk)
-        print(b)
         image = '/static/capture/images/{}.png'.format(pk)
-        return render(request, 'capture/test.html', {'image': image})
+        return render(request, 'capture/test.html', {'image': image, 'pk': pk})
+
+class NoteListCreateView(generics.ListCreateAPIView):
+    queryset = Note.objects.all()
+    serializer_class = NoteSerializer
+    filter_fields = ('bookmark__id',)
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+
+        pk = serializer.data['id']
+        bookmarkPK = request.POST.get('bookmarkPK')
+        note = Note.objects.get(pk=pk)
+        bookmark = Bookmark.objects.get(pk=bookmarkPK)
+
+        note.bookmark = bookmark
+        note.save()
+        serializer = NoteSerializer(note)
+
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)

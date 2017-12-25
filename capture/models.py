@@ -34,5 +34,5 @@ class Folder(models.Model):
 class Note(models.Model):
     x = models.CharField(max_length=40)
     y = models.CharField(max_length=40)
-    bookmark = models.ForeignKey(Bookmark)
+    bookmark = models.ForeignKey(Bookmark, blank=True, null=True)
     text = models.TextField(default='')
