@@ -360,7 +360,7 @@
                             $.ajax(settings).done(function (response) {
                                 console.log(response);
                                 getSideMenuFolder();
-                                getBookmark();
+                                getBookmark(selectedFolder, selectedTags);
                             });
                         }
                     });
@@ -384,7 +384,7 @@
                         $.ajax(settings).done(function (response) {
                             console.log(response);
                             getSideMenuTag();
-                            getBookmark();
+                            getBookmark(selectedFolder, selectedTags);
                         });
 
                     }
