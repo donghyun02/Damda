@@ -372,7 +372,7 @@
                         var settings = {
                             "async": true,
                             "crossDomain": true,
-                            "url": `/app/bookmarks/${bookmarkID}`,
+                            "url": `/app/bookmarks/${bookmarkID}/`,
                             "method": "PATCH",
                             "headers": {
                                 "content-type": "application/x-www-form-urlencoded",
@@ -396,7 +396,7 @@
                     var settings = {
                         "async": true,
                         "crossDomain": true,
-                        "url": `/app/bookmarks/${currentEditingContainerID}`,
+                        "url": `/app/bookmarks/${currentEditingContainerID}/`,
                         "method": "DELETE",
                         "headers": {
                             "content-type": "application/x-www-form-urlencoded"
