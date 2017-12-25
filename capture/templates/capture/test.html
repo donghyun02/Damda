@@ -138,8 +138,6 @@
             function appendNote() {
                 $('.note').remove();
                 for(i in notes) {
-                    console.log(`x: ${notes[i].x}`);
-                    console.log(`y: ${notes[i].y}`);
                     let style = {
                         'position': 'absolute',
                         'left': parseFloat(notes[i].x),
@@ -153,25 +151,21 @@
 
                     $(`#${notes[i].id}`).draggable(
                         {
-                            drag: function() {
-                                console.log("draged!");
-                            },
-                            stop: function() {
+                            stop: function(e) {
                                 console.log("stoped!");
+                                console.log(e.pageX);
+                                console.log(e.pageY);
                             }
                         }
                     );
                     $(`#${notes[i].id}`).css(style);
                     $(`#${notes[i].id}`).focusout(() => {
                         console.log('blured!');
-                        patchNote(notes[i].id, $(`#${notes[i].id} textarea`).val());
+                        patchNoteOfText(notes[i].id, $(`#${notes[i].id} textarea`).val());
                     });
-                    // $(`#${notes[i].id}`).on("sortupdate", (event, ui) => {
-                    //     console.log('moveend!');
-                    // });
                 }
             }
-            function patchNote(id, text) {
+            function patchNoteOfText(id, text) {
                 var settings = {
                     "async": true,
                     "crossDomain": true,
@@ -189,6 +183,9 @@
                 $.ajax(settings).done(function (response) {
                     console.log(response);
                 });
+            }
+            function patchNoteOfPosition(id, x, y) {
+
             }
         </script>
     </body>
