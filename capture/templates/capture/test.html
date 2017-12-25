@@ -154,7 +154,7 @@
                         $(`#${notes[i].id}`).draggable();
                     });
                     $(`#${notes[i].id}`).css(style);
-                    $(`#${notes[i].id}`).blur(() => {
+                    $(`#${notes[i].id}`).focusout(() => {
                         console.log('blured!');
                     });
                 }
