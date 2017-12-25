@@ -335,12 +335,13 @@
 
                 $('#edit-bookmark-submit').on('click', () => {
                     let bookmarkID;
-                    $('.edit-bookmark-folder').each((e, target) => {
 
+                    $('.edit-bookmark-folder').each((e, target) => {
                         bookmarkID = target.id.split('-')[target.id.split('-').length - 2];
                         let folderName = '';
 
                         if($(target).css('color') == 'rgb(44, 85, 205)') {
+                            console.log("Pass folder");
                             folderName = $(target).text();
 
                             var settings = {
@@ -364,29 +365,32 @@
                             });
                         }
                     });
+
                     for(let i in userTags) {
                         console.log('REQUEST');
                         tag = $('#edit-bookmark-tag').val();
-                        var settings = {
-                            "async": true,
-                            "crossDomain": true,
-                            "url": `/app/bookmarks/${bookmarkID}/`,
-                            "method": "PATCH",
-                            "headers": {
-                                "content-type": "application/x-www-form-urlencoded",
-                                "authorization": `Basic ${token}`
-                            },
-                            "data": {
-                                "tag": tag
+                        if(userTags == tag) {
+                            console.log("Pass Tag");
+                            var settings = {
+                                "async": true,
+                                "crossDomain": true,
+                                "url": `/app/bookmarks/${bookmarkID}/`,
+                                "method": "PATCH",
+                                "headers": {
+                                    "content-type": "application/x-www-form-urlencoded",
+                                    "authorization": `Basic ${token}`
+                                },
+                                "data": {
+                                    "tag": tag
+                                }
                             }
+
+                            $.ajax(settings).done(function (response) {
+                                console.log(response);
+                                getSideMenuTag();
+                                getBookmark(selectedFolder, selectedTags);
+                            });
                         }
-
-                        $.ajax(settings).done(function (response) {
-                            console.log(response);
-                            getSideMenuTag();
-                            getBookmark(selectedFolder, selectedTags);
-                        });
-
                     }
                     $('#edit-bookmark-tag').val('');
                     $('#edit-url-popup').css('display', 'none');
