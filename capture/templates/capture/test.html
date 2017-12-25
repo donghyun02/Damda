@@ -165,10 +165,11 @@
                         console.log('blured!');
                         patchNoteOfText(notes[i].id, $(`#${notes[i].id} textarea`).val());
                     });
-                    $(`#${notes[i].id}-close`).on("click", () => {
+                    $(`#${notes[i].id}-close`).on("click", (e) => {
                         console.log("close button clicked");
-                        console.log(notes[i].id);
-                        deleteNote(notes[i].id);
+                        id = e.target.id.split('-')[0];
+                        console.log(id);
+                        deleteNote(id);
                     });
                 }
             }
