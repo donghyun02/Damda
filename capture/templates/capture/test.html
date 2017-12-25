@@ -141,8 +141,8 @@
                     console.log(`y: ${notes[i].y}`);
                     let style = {
                         'position': 'absolute',
-                        'left': notes[i].x,
-                        'top': notes[i].y
+                        'left': parseFloat(notes[i].x),
+                        'top': parseFloat(notes[i].y)
                     }
                     $('.content').append(`
                         <div id="${notes[i].id}" class="note">
