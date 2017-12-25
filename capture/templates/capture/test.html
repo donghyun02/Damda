@@ -145,6 +145,7 @@
                     }
                     $('.content').append(`
                         <div id="${notes[i].id}" class="note">
+                            <img id="${notes[i].id}-close" src="/static/capture/images/close.png">
                             <textarea>${notes[i].text}</textarea>
                         </div>
                     `);
@@ -153,10 +154,6 @@
                         {
                             stop: function(e) {
                                 console.log("stoped!");
-                                console.log(e.pageX);
-                                console.log(e.pageY);
-                                console.log($(this).position().left);
-                                console.log($(this).position().top);
                                 patchNoteOfPosition(notes[i].id, $(this).position().left, $(this).position().top);
                             }
                         }
