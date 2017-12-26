@@ -367,9 +367,10 @@
                     });
 
                     let tag = $('#edit-bookmark-tag').val();
+
                     for(let i in userTags) {
                         console.log('REQUEST');
-                        if(userTags == tag) {
+                        if(userTags[i] == tag) {
                             console.log("Pass Tag");
                             var settings = {
                                 "async": true,
