@@ -371,7 +371,7 @@
                     console.log(userTags);
                     for(let i in userTags) {
                         console.log('REQUEST');
-                        if(userTags[i] == tag) {
+                        if(userTags[i].name == tag) {
                             console.log("Pass Tag");
                             var settings = {
                                 "async": true,
